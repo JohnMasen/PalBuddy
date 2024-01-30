@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalBuddy.Core", "PalBuddy.Core\PalBuddy.Core.csproj", "{B242D464-AE1D-4ADB-89E9-CC57E2CB13B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B242D464-AE1D-4ADB-89E9-CC57E2CB13B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B242D464-AE1D-4ADB-89E9-CC57E2CB13B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B242D464-AE1D-4ADB-89E9-CC57E2CB13B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B242D464-AE1D-4ADB-89E9-CC57E2CB13B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC25F5AC-A90D-410B-8C16-231536C303DD}
+	EndGlobalSection
+EndGlobal
