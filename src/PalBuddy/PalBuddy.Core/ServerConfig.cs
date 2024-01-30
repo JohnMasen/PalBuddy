@@ -77,7 +77,7 @@ namespace PalBuddy.Core
         [StreamPropertyName("bEnableFastTravel")]
         public bool EnableFastTravel { get; set; } = true;
 
-        [StreamPropertyName("bExistPlayerAfterLogout")]
+        [StreamPropertyName("bIsStartLocationSelectByMap")]
         public bool IsStartLocationSelectByMap { get; set; } = true;
         [StreamPropertyName("bExistPlayerAfterLogout")]
         public bool ExistPlayerAfterLogout { get; set; }
@@ -104,7 +104,7 @@ namespace PalBuddy.Core
 
         public static ServerConfig ReadFrom(Stream stream)
         {
-            using StreamReader reader = new StreamReader(stream);
+            using StreamReader reader = new StreamReader(stream,Encoding.UTF8);
             string? buffer = reader.ReadLine();
             Dictionary<string, string> kvTable = new Dictionary<string, string>();
             while (buffer != null)
@@ -223,6 +223,7 @@ namespace PalBuddy.Core
 
                 isFirst = false;
             }
+            writer.Write(")");
         }
 
         public void SaveTo(string path)
