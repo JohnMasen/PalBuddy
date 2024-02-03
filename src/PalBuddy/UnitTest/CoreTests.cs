@@ -8,6 +8,7 @@ namespace UnitTest
 {
     public class CoreTests
     {
+        private string serverPath = @"C:\GithubRoot\PalBuddy\src\PalBuddy\FakeServer\bin\Debug\net8.0\FakeServer.exe";
         [Fact]
         public void ReadServerConfigFromFile()
         {
@@ -50,6 +51,14 @@ namespace UnitTest
                 Debug.WriteLine(cr.DifferencesString);
             }
             
+        }
+
+        [Fact]
+        public void StartServer()
+        {
+            PalDedicatedServer server = new PalDedicatedServer(serverPath);
+            server.Start();
+            Thread.Sleep(2000);//wait for thread start
         }
     }
 }

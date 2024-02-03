@@ -12,6 +12,7 @@ namespace PalBuddy.Core
 {
     public class ServerConfig
     {
+        private static Regex kvMatch = new Regex(@"OptionSettings=[(]{1}((?<key>\w+)=(?<value>[^,]+)[,]{0,})+[)]{1}");
         public ServerConfigDifficultyEnum Difficulty { get; set; } = ServerConfigDifficultyEnum.None;
         public float DayTimeSpeedRate { get; set; } = 1f;
         public float NightTimeSpeedRate { get; set; } = 1f;
@@ -110,33 +111,53 @@ namespace PalBuddy.Core
             while (buffer != null)
             {
                 buffer = buffer.Trim();
-                if (buffer.StartsWith("OptionSettings="))//ugly code, should use regex
+                var x=kvMatch.Match(buffer);
+                if (x.Success)
                 {
-                    string data = buffer.Split("=", 2)[1];
-                    if (data.StartsWith("(") && data.EndsWith(")"))
+                    var keys = x.Groups["key"].Captures;
+                    var values = x.Groups["value"].Captures;
+                    if (keys.Count!=values.Count)
                     {
-                        data = data.Substring(1, data.Length - 2);//remove brackets at begging and ending
+                        throw new InvalidOperationException("invalid INI file format, value pair not match in OptionsSettings section");
                     }
-                    else
+                    for (int i = 0; i < keys.Count; i++)
                     {
-                        throw new InvalidConfigfileException("Invalid config file format, expected format is OptionsSettings=(<config>)");
-                    }
-                    var pairs = data.Split(",", StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var item in pairs)
-                    {
-                        var p = item.Split("=");
-                        string v = p[1];
+                        var v = values[i].Value;
                         if (v.StartsWith("\"") && v.EndsWith("\""))
                         {
                             v = v.Substring(1, v.Length - 2);
                         }
-                        kvTable.Add(p[0], v);
+                        kvTable.Add(keys[i].Value, v);
                     }
                     break;
                 }
+                //if (buffer.StartsWith("OptionSettings="))//ugly code, should use regex
+                //{
+                //    string data = buffer.Split("=", 2)[1];
+                //    if (data.StartsWith("(") && data.EndsWith(")"))
+                //    {
+                //        data = data.Substring(1, data.Length - 2);//remove brackets at begging and ending
+                //    }
+                //    else
+                //    {
+                //        throw new InvalidConfigfileException("Invalid config file format, expected format is OptionsSettings=(<config>)");
+                //    }
+                //    var pairs = data.Split(",", StringSplitOptions.RemoveEmptyEntries);
+                //    foreach (var item in pairs)
+                //    {
+                //        var p = item.Split("=");
+                //        string v = p[1];
+                //        if (v.StartsWith("\"") && v.EndsWith("\""))
+                //        {
+                //            v = v.Substring(1, v.Length - 2);
+                //        }
+                //        kvTable.Add(p[0], v);
+                //    }
+                //    break;
+                //}
                 buffer = reader.ReadLine();
             }
-            if (kvTable != null)
+            if (kvTable.Count>0)
             {
                 ServerConfig result = new ServerConfig();
                 var ps = result.GetType().GetProperties();
@@ -175,9 +196,9 @@ namespace PalBuddy.Core
 
         }
 
-        public static ServerConfig ReadFrom(string configFile)
+        public static ServerConfig ReadFrom(string path)
         {
-            using var f = File.OpenRead(configFile);
+            using var f = File.OpenRead(path);
             return ReadFrom(f);
         }
 
