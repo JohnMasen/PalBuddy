@@ -23,32 +23,56 @@ namespace PalBuddy.Core
     {
         Process serverProcess = null;
         object syncRoot = new object();
-        public event EventHandler<ServerStatusEnum> ServerStatusChanged;
-        private ServerStatusEnum _state=ServerStatusEnum.Idle;
+        public event EventHandler<ServerStatusEnum> OnServerStatusChanged;
+        private ServerStatusEnum _state = ServerStatusEnum.Idle;
         public string ServerPath { get; private set; }
 
         public PalDedicatedServer(string serverPath)
         {
+            if (string.IsNullOrWhiteSpace(serverPath))
+            {
+                throw new ArgumentOutOfRangeException("serverPath must be a valid path");
+            }
+            if (!File.Exists(serverPath))
+            {
+                throw new FileNotFoundException($"could not find file {serverPath}");
+            }
+            if (Path.GetFileNameWithoutExtension(serverPath) != "PalServer")
+            {
+                throw new ArgumentOutOfRangeException("the filename in serverPath must be PalServer[.exe]");
+            }
             ServerPath = serverPath;
         }
-        public ServerConfig CurrentConfig { get; private set; }
-        public ServerStatusEnum ServerState 
-        { 
+        public ServerConfig CurrentConfig
+        {
+            get
+            {
+                using var s = getSaveFile();
+                return ServerConfig.ReadFrom(s);
+            }
+            set
+            {
+                using var s = getSaveFile();
+                value.SaveTo(s);
+            }
+        }
+        public ServerStatusEnum ServerState
+        {
             get
             {
                 return _state;
             }
             private set
             {
-                if (value!=_state)
+                if (value != _state)
                 {
-                    ServerStatusChanged?.Invoke(this, value);
+                    OnServerStatusChanged?.Invoke(this, value);
                 }
                 _state = value;
             }
         }
-        
-        public ServerConfig? Start()
+
+        public void Start(bool enablePerformanceOptimization=true)
         {
             if (ServerState == ServerStatusEnum.Idle)
             {
@@ -60,15 +84,20 @@ namespace PalBuddy.Core
                         ProcessStartInfo info = new ProcessStartInfo()
                         {
                             FileName = ServerPath,
-                            //UseShellExecute = true,
-                            RedirectStandardInput = true,
+                            UseShellExecute = true,
+                            //RedirectStandardInput = true,
                             //CreateNoWindow =false
                         };
+                        if (enablePerformanceOptimization)
+                        {
+                            info.Arguments = "-useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS";
+                        }
                         try
                         {
                             serverProcess = Process.Start(info);
+                            serverProcess.EnableRaisingEvents = true;
+                            serverProcess.Exited += ServerProcess_Exited;
                             ServerState = ServerStatusEnum.Running;
-                            return loadConfig();
                         }
                         catch (Exception)
                         {
@@ -77,15 +106,14 @@ namespace PalBuddy.Core
                         }
                     }
                 }
-                serverProcess.Exited += ServerProcess_Exited;
             }
-            return null;
         }
 
-        private ServerConfig loadConfig()
+
+        private Stream getSaveFile()
         {
-            string configFolder = null;
-            string serverFolder = Path.GetDirectoryName(ServerPath);
+            string configFolder;
+            string serverFolder = Path.GetDirectoryName(ServerPath)!;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 configFolder = Path.Combine(serverFolder, "Pal", "Saved", "Config", "LinuxServer");
@@ -103,15 +131,15 @@ namespace PalBuddy.Core
                 Directory.CreateDirectory(serverFolder);
             }
             string configFile = Path.Combine(configFolder, "PalWorldSettings.ini");
-            if (File.Exists(configFile))
+            return File.Open(configFile, new FileStreamOptions()
             {
-                return ServerConfig.ReadFrom(configFile);
-            }
-            else
-            {
-                return new ServerConfig();
-            }
+                Mode = FileMode.OpenOrCreate,
+                Access = FileAccess.ReadWrite,
+                Share = FileShare.None
+            });
+
         }
+
 
         private void ServerProcess_Exited(object? sender, EventArgs e)
         {
