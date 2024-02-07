@@ -48,6 +48,10 @@ namespace PalBuddy.Core
             get
             {
                 using var s = getSaveFile();
+                if (s.Length==0)//config does not exist,new file created
+                {
+                    return new ServerConfig();
+                }
                 return ServerConfig.ReadFrom(s);
             }
             set
@@ -66,9 +70,9 @@ namespace PalBuddy.Core
             {
                 if (value != _state)
                 {
+                    _state = value;
                     OnServerStatusChanged?.Invoke(this, value);
                 }
-                _state = value;
             }
         }
 
@@ -126,9 +130,9 @@ namespace PalBuddy.Core
             {
                 throw new NotSupportedException("Current OS does is not supported by palworld dedicated server");
             }
-            if (!Directory.Exists(serverFolder))
+            if (!Directory.Exists(configFolder))
             {
-                Directory.CreateDirectory(serverFolder);
+                Directory.CreateDirectory(configFolder);
             }
             string configFile = Path.Combine(configFolder, "PalWorldSettings.ini");
             return File.Open(configFile, new FileStreamOptions()

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalBuddy.Core", "PalBuddy.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{02DB5CD2-0543-4728-9DC3-E18B266BCFCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeServer", "FakeServer\FakeServer.csproj", "{FE6EFE37-ED74-4A37-80CB-3C8B03ED6213}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeServer", "FakeServer\FakeServer.csproj", "{FE6EFE37-ED74-4A37-80CB-3C8B03ED6213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{B31379E1-6E40-435E-8B7E-262F3E5D8979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{B31379E1-6E40-435E-8B7E-262F3E5D8979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalBuddy.Web", "PalBuddy.Web\PalBuddy.Web.csproj", "{7C870859-7C49-47F1-A872-5A9469997A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B31379E1-6E40-435E-8B7E-262F3E5D8979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B31379E1-6E40-435E-8B7E-262F3E5D8979}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B31379E1-6E40-435E-8B7E-262F3E5D8979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C870859-7C49-47F1-A872-5A9469997A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C870859-7C49-47F1-A872-5A9469997A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C870859-7C49-47F1-A872-5A9469997A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C870859-7C49-47F1-A872-5A9469997A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

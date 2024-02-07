@@ -1,0 +1,56 @@
+﻿@using PalBuddy.Core
+
+<h3>ServerConfig</h3>
+<p>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                ServerName
+            </td>
+            <td>
+                <InputText @bind-Value="serverConfig.ServerName" />
+            </td>
+        </tr>
+        <tr>
+            <td>Difficulty</td>
+            <td>
+                <InputSelect @bind-Value="serverConfig.Difficulty">
+                    <option value="None">None</option>
+                    <option value="Difficulty">Difficulty</option>
+                </InputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td>DayTimeSpeedRate</td>
+            <td><input @bind="serverConfig.DayTimeSpeedRate"/></td>
+        </tr>
+        <tr>
+            <td>NightTimeSpeedRate</td>
+            <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
+        </tr>
+    </table>
+    <button class="btn btn-primary" @onclick="ApplySettings">Apply</button>
+    @foreach (var p in serverConfig.GetType().GetProperties())
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
+        </tr>
+    }
+</p>
+@code {
+    [Parameter]
+    public PalDedicatedServer Server{ get; set; }
+
+    private Core.ServerConfig serverConfig;
+    protected override void OnInitialized()
+    {
+        serverConfig = Server.CurrentConfig;
+        base.OnInitialized();
+
+    }
+    private void ApplySettings()
+    {
+        Server.CurrentConfig = serverConfig;
+    }
+}
