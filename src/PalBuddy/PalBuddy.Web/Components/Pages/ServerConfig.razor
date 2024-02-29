@@ -1,46 +1,96 @@
 ﻿@using PalBuddy.Core
-
+@using System.Globalization;
+@inject IStringLocalizer<ServerConfig> Loc;
 <h3>ServerConfig</h3>
 <p>
     <table class="table table-bordered">
-        <tr>
-            <td>
-                ServerName
-            </td>
-            <td>
-                <InputText @bind-Value="serverConfig.ServerName" />
-            </td>
+        @* <tr>
+        <td>
+        ServerName
+        </td>
+        <td>
+        <InputText @bind-Value="serverConfig.ServerName" />
+        </td>
         </tr>
         <tr>
-            <td>Difficulty</td>
-            <td>
-                <InputSelect @bind-Value="serverConfig.Difficulty">
-                    <option value="None">None</option>
-                    <option value="Difficulty">Difficulty</option>
-                </InputSelect>
-            </td>
+        <td>Difficulty</td>
+        <td>
+        <InputSelect @bind-Value="serverConfig.Difficulty">
+        <option value="None">None</option>
+        <option value="Difficulty">Difficulty</option>
+        </InputSelect>
+        </td>
         </tr>
         <tr>
-            <td>DayTimeSpeedRate</td>
-            <td><input @bind="serverConfig.DayTimeSpeedRate"/></td>
+        <td>DayTimeSpeedRate</td>
+        <td><input @bind="serverConfig.DayTimeSpeedRate"/></td>
         </tr>
         <tr>
-            <td>NightTimeSpeedRate</td>
-            <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
-        </tr>
+        <td>NightTimeSpeedRate</td>
+        <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
+        </tr> *@
+
+
+        @foreach (var p in serverConfig.GetType().GetProperties())
+        {
+            <tr>
+                <td>@(@Loc.GetString($"ServerConfig.{@p.Name}"))</td>
+                <td>
+                    @if (p.PropertyType.IsEnum)
+                    {
+                        var currentValue = serverConfig.GetPropertyByName(p.Name);
+                        <select onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})">
+                            @foreach (var item in Enum.GetValues(p.PropertyType))
+                            {
+                                if (currentValue == item.ToString())
+                                {
+                                    <option value="@item" selected="selected">@item</option>
+                                }
+                                else
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+                        </select>
+
+                    }
+                    else
+                    {
+                        @switch (Type.GetTypeCode(p.PropertyType))
+                        {
+                            case TypeCode.Boolean:
+                                @if (bool.Parse(serverConfig.GetPropertyByName(p.Name)))
+                                {
+                                    <input type="checkbox" checked onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})"/>
+                                }
+                                else
+                                {
+                                    <input type="checkbox" onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})" />
+                                }
+                                @* <input type="checkbox" value="@p.GetValue(serverConfig)"
+                                <select onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})">
+                                    <option value="True"
+                                            selected="@getBoolOptionSelectedValue(p.Name,true)">True</option>
+                                    <option value="False"
+                                            selected="@getBoolOptionSelectedValue(p.Name,false)">False</option>
+                                </select> *@
+                                break;
+                            default:
+                                <input value="@serverConfig.GetPropertyByName(p.Name)" onchange="@((ChangeEventArgs e)=>serverConfig.SetPropertyByName(p.Name,e.Value.ToString()))" />
+                                break;
+                        }
+                    }
+
+
+                </td>
+            </tr>
+        }
+        <button class="btn btn-primary" @onclick="ApplySettings">Apply</button>
     </table>
-    <button class="btn btn-primary" @onclick="ApplySettings">Apply</button>
-    @foreach (var p in serverConfig.GetType().GetProperties())
-    {
-        <tr>
-            <td>@p.Name</td>
-            <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
-        </tr>
-    }
 </p>
 @code {
     [Parameter]
-    public PalDedicatedServer Server{ get; set; }
+    public PalDedicatedServer Server { get; set; }
 
     private Core.ServerConfig serverConfig;
     protected override void OnInitialized()
@@ -53,4 +103,11 @@
     {
         Server.CurrentConfig = serverConfig;
     }
+    private string getBoolOptionSelectedValue(string propertyName, bool currentValue)
+    {
+        var result= bool.Parse(serverConfig.GetPropertyByName(propertyName)) == currentValue ? "selected" : string.Empty;
+        return result;
+    }
+    
+
 }

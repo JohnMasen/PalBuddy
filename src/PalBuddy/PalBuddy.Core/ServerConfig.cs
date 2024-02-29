@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
@@ -164,30 +165,32 @@ namespace PalBuddy.Core
                 foreach (var p in ps)
                 {
                     var name = p.GetCustomAttribute<StreamPropertyNameAttribute>()?.Name ?? p.Name;
-                    if (p.PropertyType.IsEnum)
-                    {
-                        p.SetValue(result, Enum.Parse(p.PropertyType, kvTable[name]));
-                    }
-                    else
-                    {
-                        switch (Type.GetTypeCode(p.PropertyType))
-                        {
-                            case TypeCode.String:
-                                p.SetValue(result, kvTable[name]);
-                                break;
-                            case TypeCode.Boolean:
-                                p.SetValue(result, bool.Parse(kvTable[name]));
-                                break;
-                            case TypeCode.Single:
-                                p.SetValue(result, float.Parse(kvTable[name]));
-                                break;
-                            case TypeCode.Int32:
-                                p.SetValue(result, int.Parse(kvTable[name]));
-                                break;
-                            default:
-                                throw new InvalidOperationException($"failed to parse config file,unknown property {p.Name}");
-                        }
-                    }
+                    string value = kvTable[name];
+                    result.SetPropertyByName(p.Name, value);
+                    //if (p.PropertyType.IsEnum)
+                    //{
+                    //    p.SetValue(result, Enum.Parse(p.PropertyType, kvTable[name]));
+                    //}
+                    //else
+                    //{
+                    //    switch (Type.GetTypeCode(p.PropertyType))
+                    //    {
+                    //        case TypeCode.String:
+                    //            p.SetValue(result, kvTable[name]);
+                    //            break;
+                    //        case TypeCode.Boolean:
+                    //            p.SetValue(result, bool.Parse(kvTable[name]));
+                    //            break;
+                    //        case TypeCode.Single:
+                    //            p.SetValue(result, float.Parse(kvTable[name]));
+                    //            break;
+                    //        case TypeCode.Int32:
+                    //            p.SetValue(result, int.Parse(kvTable[name]));
+                    //            break;
+                    //        default:
+                    //            throw new InvalidOperationException($"failed to parse config file,unknown property {p.Name}");
+                    //    }
+                    //}
                 }
                 return result;
             }
@@ -200,6 +203,40 @@ namespace PalBuddy.Core
         {
             using var f = File.OpenRead(path);
             return ReadFrom(f);
+        }
+        public  string GetPropertyByName(string name)
+        {
+            var p = GetType().GetProperty(name);
+            return p.GetValue(this).ToString();
+        }
+
+        public  void SetPropertyByName(string name,string value)
+        {
+            var p = GetType().GetProperty(name);
+            if (p.PropertyType.IsEnum)
+            {
+                p.SetValue(this, Enum.Parse(p.PropertyType, value));
+            }
+            else
+            {
+                switch (Type.GetTypeCode(p.PropertyType))
+                {
+                    case TypeCode.String:
+                        p.SetValue(this, value);
+                        break;
+                    case TypeCode.Boolean:
+                        p.SetValue(this, bool.Parse(value));
+                        break;
+                    case TypeCode.Single:
+                        p.SetValue(this, float.Parse(value));
+                        break;
+                    case TypeCode.Int32:
+                        p.SetValue(this, int.Parse(value));
+                        break;
+                    default:
+                        throw new InvalidOperationException($"unknown property {p.Name}");
+                }
+            }
         }
 
         public void SaveTo(Stream stream,bool leaveOpen=false)
@@ -234,10 +271,10 @@ namespace PalBuddy.Core
                     //    writer.Write(p.GetValue(this));
                     //    break;
                     case TypeCode.String:
-                        writer.Write($"\"{p.GetValue(this)}\"");
+                        writer.Write($"\"{GetPropertyByName(p.Name)}\"");
                         break;
                     default:
-                        writer.Write(p.GetValue(this));
+                        writer.Write(GetPropertyByName(p.Name));
                         break;
                 }
 

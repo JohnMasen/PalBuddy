@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ServerConfig.ActiveUNKO" xml:space="preserve">
+    <value>ServerConfig.ActiveUNKO</value>
+  </data>
+  <data name="ServerConfig.AdminPassword" xml:space="preserve">
+    <value>AdminPassword(管理员密码)</value>
+  </data>
+  <data name="ServerConfig.AutoResetGuildNoOnlinePlayers" xml:space="preserve">
+    <value>自动重置离线玩家工会</value>
+  </data>
+  <data name="ServerConfig.AutoResetGuildTimeNoOnlinePlayers" xml:space="preserve">
+    <value>离线玩家自动重置工会时间</value>
+  </data>
+  <data name="ServerConfig.BanListURL" xml:space="preserve">
+    <value>BanListURL</value>
+  </data>
+  <data name="ServerConfig.BaseCampMaxNum" xml:space="preserve">
+    <value>最大基地数</value>
+  </data>
+  <data name="ServerConfig.BaseCampWorkerMaxNum" xml:space="preserve">
+    <value>最大基地帕鲁工人数</value>
+  </data>
+  <data name="ServerConfig.BuildObjectDamageRate" xml:space="preserve">
+    <value>建筑物损坏速率</value>
+  </data>
+  <data name="ServerConfig.BuildObjectDeteriorationDamageRate" xml:space="preserve">
+    <value>建筑物老化速率</value>
+  </data>
+  <data name="ServerConfig.CanPickupOtherGuildDeathPenaltyDrop" xml:space="preserve">
+    <value>可以拾取其他工会玩家掉落物</value>
+  </data>
+  <data name="ServerConfig.CollectionDropRate" xml:space="preserve">
+    <value>收集品掉落率</value>
+  </data>
+  <data name="ServerConfig.CollectionObjectHpRate" xml:space="preserve">
+    <value>收集品HP率</value>
+  </data>
+  <data name="ServerConfig.CollectionObjectRespawnSpeedRate" xml:space="preserve">
+    <value>收集品重生速率</value>
+  </data>
+  <data name="ServerConfig.CoopPlayerMaxNum" xml:space="preserve">
+    <value>最大合作玩家数</value>
+  </data>
+  <data name="ServerConfig.DayTimeSpeedRate" xml:space="preserve">
+    <value>白天流逝速度</value>
+  </data>
+  <data name="ServerConfig.DeathPenalty" xml:space="preserve">
+    <value>死亡惩罚</value>
+  </data>
+  <data name="ServerConfig.DropItemAliveMaxHours" xml:space="preserve">
+    <value>掉落物寿命（小时）</value>
+  </data>
+  <data name="ServerConfig.DropItemMaxNum" xml:space="preserve">
+    <value>最大掉落物数量</value>
+  </data>
+  <data name="ServerConfig.DropItemMaxNum_UNKO" xml:space="preserve">
+    <value>ServerConfig.DropItemMaxNum_UNKO</value>
+  </data>
+  <data name="ServerConfig.EnableAimAssistKeyboard" xml:space="preserve">
+    <value>启用键盘辅助瞄准</value>
+  </data>
+  <data name="ServerConfig.EnableAimAssistPad" xml:space="preserve">
+    <value>启动手柄辅助瞄准</value>
+  </data>
+  <data name="ServerConfig.EnableDefenseOtherGuildPlayer" xml:space="preserve">
+    <value>启用防御其他工会玩家</value>
+  </data>
+  <data name="ServerConfig.EnableFastTravel" xml:space="preserve">
+    <value>允许快速旅行</value>
+  </data>
+  <data name="ServerConfig.EnableFriendlyFire" xml:space="preserve">
+    <value>玩家可以互相伤害</value>
+  </data>
+  <data name="ServerConfig.EnableInvaderEnemy" xml:space="preserve">
+    <value>启用入侵</value>
+  </data>
+  <data name="ServerConfig.EnableNonLoginPenalty" xml:space="preserve">
+    <value>启用不上线惩罚</value>
+  </data>
+  <data name="ServerConfig.EnablePlayerToPlayerDamage" xml:space="preserve">
+    <value>PvP伤害</value>
+  </data>
+  <data name="ServerConfig.EnemyDropItemRate" xml:space="preserve">
+    <value>敌人掉落物品概率</value>
+  </data>
+  <data name="ServerConfig.ExistPlayerAfterLogout" xml:space="preserve">
+    <value>下线后玩家角色保留在原地</value>
+  </data>
+  <data name="ServerConfig.ExpRate" xml:space="preserve">
+    <value>经验倍率</value>
+  </data>
+  <data name="ServerConfig.GuildPlayerMaxNum" xml:space="preserve">
+    <value>工会最大玩家数</value>
+  </data>
+  <data name="ServerConfig.IsMultiplay" xml:space="preserve">
+    <value>多人游戏</value>
+  </data>
+  <data name="ServerConfig.IsPVP" xml:space="preserve">
+    <value>是否启用PVP</value>
+  </data>
+  <data name="ServerConfig.IsStartLocationSelectByMap" xml:space="preserve">
+    <value>允许在地图上选择起始位置</value>
+  </data>
+  <data name="ServerConfig.NightTimeSpeedRate" xml:space="preserve">
+    <value>夜晚流逝速度</value>
+  </data>
+  <data name="ServerConfig.PalAutoHpRegeneRateInSleep" xml:space="preserve">
+    <value>帕鲁睡觉时HP重生速率</value>
+  </data>
+  <data name="ServerConfig.PalCaptureRate" xml:space="preserve">
+    <value>帕鲁捕捉率</value>
+  </data>
+  <data name="ServerConfig.PalDamageRateAttack" xml:space="preserve">
+    <value>帕鲁攻击效率</value>
+  </data>
+  <data name="ServerConfig.PalDamageRateDefense" xml:space="preserve">
+    <value>帕鲁防御效率</value>
+  </data>
+  <data name="ServerConfig.PalEggDefaultHatchingTime" xml:space="preserve">
+    <value>帕鲁蛋默认孵化时间</value>
+  </data>
+  <data name="ServerConfig.PalSpawnNumRate" xml:space="preserve">
+    <value>帕鲁生成率</value>
+  </data>
+  <data name="ServerConfig.PalStaminaDecreaceRate" xml:space="preserve">
+    <value>帕鲁疲劳速率</value>
+  </data>
+  <data name="ServerConfig.PalStomachDecreaceRate" xml:space="preserve">
+    <value>帕鲁解饿速率</value>
+  </data>
+  <data name="ServerConfig.PlayerAutoHPRegeneRate" xml:space="preserve">
+    <value>玩家HP重生速率</value>
+  </data>
+  <data name="ServerConfig.PlayerAutoHpRegeneRateInSleep" xml:space="preserve">
+    <value>玩家睡眠时HP重生速率</value>
+  </data>
+  <data name="ServerConfig.PlayerDamageRateAttack" xml:space="preserve">
+    <value>玩家攻击效率</value>
+  </data>
+  <data name="ServerConfig.PlayerDamageRateDefense" xml:space="preserve">
+    <value>玩家防御效率</value>
+  </data>
+  <data name="ServerConfig.PlayerStomachDecreaceRate" xml:space="preserve">
+    <value>玩家饥饿速率</value>
+  </data>
+  <data name="ServerConfig.PublicIP" xml:space="preserve">
+    <value>PublicIP</value>
+  </data>
+  <data name="ServerConfig.PublicPort" xml:space="preserve">
+    <value>PublicPort</value>
+  </data>
+  <data name="ServerConfig.RCONEnabled" xml:space="preserve">
+    <value>RCONEnabled</value>
+  </data>
+  <data name="ServerConfig.RCONPort" xml:space="preserve">
+    <value>RCONPort</value>
+  </data>
+  <data name="ServerConfig.Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="ServerConfig.ServerDescription" xml:space="preserve">
+    <value>服务器简介</value>
+  </data>
+  <data name="ServerConfig.ServerName" xml:space="preserve">
+    <value>服务器名称</value>
+  </data>
+  <data name="ServerConfig.ServerPassword" xml:space="preserve">
+    <value>ServerPassword(服务器密码)</value>
+  </data>
+  <data name="ServerConfig.ServerPlayerMaxNum" xml:space="preserve">
+    <value>服务器最大人数</value>
+  </data>
+  <data name="ServerConfig.UseAuth" xml:space="preserve">
+    <value>UseAuth</value>
+  </data>
+  <data name="ServerConfig.WorkSpeedRate" xml:space="preserve">
+    <value>工作效率指数</value>
+  </data>
+</root>
