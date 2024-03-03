@@ -294,4 +294,7 @@
   <data name="ServerConfig.WorkSpeedRate" xml:space="preserve">
     <value>工作效率指数</value>
   </data>
+  <data name="ServerConfigPage.ApplyNotify" xml:space="preserve">
+    <value>保存完成</value>
+  </data>
 </root>

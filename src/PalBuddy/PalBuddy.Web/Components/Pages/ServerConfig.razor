@@ -2,7 +2,9 @@
 @using System.Globalization;
 @inject IStringLocalizer<ServerConfig> Loc;
 <h3>ServerConfig</h3>
+<MudSnackbarProvider />
 <p>
+    
     <table class="table table-bordered">
         @* <tr>
         <td>
@@ -10,7 +12,7 @@
         </td>
         <td>
         <InputText @bind-Value="serverConfig.ServerName" />
-        </td>
+        </td> 
         </tr>
         <tr>
         <td>Difficulty</td>
@@ -61,11 +63,13 @@
                             case TypeCode.Boolean:
                                 @if (bool.Parse(serverConfig.GetPropertyByName(p.Name)))
                                 {
-                                    <input type="checkbox" checked onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})"/>
+                                    <FluentSwitch Value="true" ValueChanged="@(args=>{serverConfig.SetPropertyByName(p.Name,args.ToString());})"/>
+                                    @* <input type="checkbox" checked onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})"/> *@
                                 }
                                 else
                                 {
-                                    <input type="checkbox" onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})" />
+                                    <FluentSwitch T="bool" Value="false" ValueChanged="@(args=>{serverConfig.SetPropertyByName(p.Name,args.ToString());})" />
+                                    @* <input type="checkbox" onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})" /> *@
                                 }
                                 @* <input type="checkbox" value="@p.GetValue(serverConfig)"
                                 <select onchange="@((ChangeEventArgs e)=>{serverConfig.SetPropertyByName(p.Name,e.Value.ToString());})">
@@ -99,9 +103,11 @@
         base.OnInitialized();
 
     }
-    private void ApplySettings()
+    private async Task ApplySettings()
     {
         Server.CurrentConfig = serverConfig;
+        // snak.Configuration.PositionClass = "Bottom-End";
+        // snak.Add(Loc.GetString("ServerConfigPage.ApplyNotify"), Severity.Info);
     }
     private string getBoolOptionSelectedValue(string propertyName, bool currentValue)
     {

@@ -144,6 +144,25 @@ namespace PalBuddy.Core
 
         }
 
+        public PalServerRCONClient GetRCONClient()
+        {
+            var cfg = CurrentConfig;
+            if (cfg.RCONEnabled)
+            {
+                return PalServerRCONClient.Connect("127.0.0.1", cfg.RCONPort, cfg.AdminPassword);
+            }
+            else
+            {
+                throw new InvalidOperationException("RCON not enabled");
+            }
+        }
+
+        public void ShutdownByRCON()
+        {
+            GetRCONClient().Shutdown(1, string.Empty);
+            ServerState = ServerStatusEnum.Stopping;
+        }
+
 
         private void ServerProcess_Exited(object? sender, EventArgs e)
         {

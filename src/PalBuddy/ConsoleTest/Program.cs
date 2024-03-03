@@ -1,18 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using PalBuddy.Core;
 
-string serverPath = Path.Combine( Environment.CurrentDirectory,"PalServer.exe");
-var x=Path.GetDirectoryName(serverPath);
-PalBuddy.Core.PalDedicatedServer server = new PalBuddy.Core.PalDedicatedServer(serverPath);
-server.OnServerStatusChanged += (_,e) => Console.WriteLine(e);
+//string serverPath = Path.Combine( Environment.CurrentDirectory,"PalServer.exe");
+//var x=Path.GetDirectoryName(serverPath);
+//PalBuddy.Core.PalDedicatedServer server = new PalBuddy.Core.PalDedicatedServer(serverPath);
+//server.OnServerStatusChanged += (_,e) => Console.WriteLine(e);
 
 
-var cfg = server.CurrentConfig;
-cfg.RCONEnabled = true;
-cfg.RCONPort = 25575;
-cfg.AdminPassword = "abc";
-server.CurrentConfig = cfg;
-server.Start();
+//var cfg = server.CurrentConfig;
+//cfg.RCONEnabled = true;
+//cfg.RCONPort = 25575;
+//cfg.AdminPassword = "abc";
+//server.CurrentConfig = cfg;
+//server.Start();
 //Console.ReadLine();
 //server.Kill();
 PalServerRCONClient rCONClient=null;
@@ -20,7 +20,7 @@ for (int i = 0; i < 5; i++)
 {
 	try
 	{
-        rCONClient = PalServerRCONClient.Connect("127.0.0.1", 25575, "abc");
+        rCONClient = PalServerRCONClient.Connect("192.168.0.18", 25575, "abc");
     }
 	catch (Exception ex)
 	{

@@ -6,6 +6,7 @@
 <h3>ServerTest</h3>
 <li>@palServer.ServerState</li>
 <button class="btn btn-primary" @onclick="startServer">Start</button>
+<button class="btn btn-primary" @onclick="stopServer">Stop</button>
 @if (showServerConfig)
 {
     <ServerConfig Server="palServer"/>
@@ -22,7 +23,8 @@
     {
         palServer.Start();
     }
-    
+
+
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -36,7 +38,12 @@
 
         }
     }
-    
+    private void stopServer()
+    {
+        palServer.ShutdownByRCON();
+
+    }
+
 
     
 

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Localization;
+using Microsoft.FluentUI.AspNetCore.Components;
 using PalBuddy.Core;
 using PalBuddy.Web.Components;
 
@@ -9,12 +10,12 @@ namespace PalBuddy.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             // Add services to the container.
             builder.Services
                 .AddLocalization()
                 .AddRazorComponents()
                 .AddInteractiveServerComponents();
+            builder.Services.AddFluentUIComponents();
             builder.Services.AddSingleton(new PalDedicatedServer(builder.Configuration["ServerPath"]));
                 var app = builder.Build();
 
@@ -35,7 +36,7 @@ namespace PalBuddy.Web
                 .SetDefaultCulture(supportedCultures[0])
                 .AddSupportedCultures(supportedCultures)
                 .AddSupportedUICultures(supportedCultures);
-            app.UseRequestLocalization(localizationOptions);    
+            app.UseRequestLocalization(localizationOptions);
 
             app.Run();
         }

@@ -117,7 +117,184 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ServerConfig.ActiveUNKO" xml:space="preserve">
+    <value>ActiveUNKO</value>
+  </data>
+  <data name="ServerConfig.AdminPassword" xml:space="preserve">
+    <value>AdminPassword</value>
+  </data>
+  <data name="ServerConfig.AutoResetGuildNoOnlinePlayers" xml:space="preserve">
+    <value>AutoResetGuildNoOnlinePlayers</value>
+  </data>
+  <data name="ServerConfig.AutoResetGuildTimeNoOnlinePlayers" xml:space="preserve">
+    <value>AutoResetGuildTimeNoOnlinePlayers</value>
+  </data>
+  <data name="ServerConfig.BanListURL" xml:space="preserve">
+    <value>BanListURL</value>
+  </data>
+  <data name="ServerConfig.BaseCampMaxNum" xml:space="preserve">
+    <value>BaseCampMaxNum</value>
+  </data>
+  <data name="ServerConfig.BaseCampWorkerMaxNum" xml:space="preserve">
+    <value>BaseCampWorkerMaxNum</value>
+  </data>
+  <data name="ServerConfig.BuildObjectDamageRate" xml:space="preserve">
+    <value>BuildObjectDamageRate</value>
+  </data>
+  <data name="ServerConfig.BuildObjectDeteriorationDamageRate" xml:space="preserve">
+    <value>BuildObjectDeteriorationDamageRate</value>
+  </data>
+  <data name="ServerConfig.CanPickupOtherGuildDeathPenaltyDrop" xml:space="preserve">
+    <value>CanPickupOtherGuildDeathPenaltyDrop</value>
+  </data>
+  <data name="ServerConfig.CollectionDropRate" xml:space="preserve">
+    <value>CollectionDropRate</value>
+  </data>
+  <data name="ServerConfig.CollectionObjectHpRate" xml:space="preserve">
+    <value>CollectionObjectHpRate</value>
+  </data>
+  <data name="ServerConfig.CollectionObjectRespawnSpeedRate" xml:space="preserve">
+    <value>CollectionObjectRespawnSpeedRate</value>
+  </data>
+  <data name="ServerConfig.CoopPlayerMaxNum" xml:space="preserve">
+    <value>CoopPlayerMaxNum</value>
+  </data>
   <data name="ServerConfig.DayTimeSpeedRate" xml:space="preserve">
-    <value>Daytime speed rate</value>
+    <value>DayTimeSpeedRate</value>
+  </data>
+  <data name="ServerConfig.DeathPenalty" xml:space="preserve">
+    <value>DeathPenalty</value>
+  </data>
+  <data name="ServerConfig.DropItemAliveMaxHours" xml:space="preserve">
+    <value>DropItemAliveMaxHours</value>
+  </data>
+  <data name="ServerConfig.DropItemMaxNum" xml:space="preserve">
+    <value>DropItemMaxNum</value>
+  </data>
+  <data name="ServerConfig.DropItemMaxNum_UNKO" xml:space="preserve">
+    <value>DropItemMaxNum_UNKO</value>
+  </data>
+  <data name="ServerConfig.EnableAimAssistKeyboard" xml:space="preserve">
+    <value>EnableAimAssistKeyboard</value>
+  </data>
+  <data name="ServerConfig.EnableAimAssistPad" xml:space="preserve">
+    <value>EnableAimAssistPad</value>
+  </data>
+  <data name="ServerConfig.EnableDefenseOtherGuildPlayer" xml:space="preserve">
+    <value>EnableDefenseOtherGuildPlayer</value>
+  </data>
+  <data name="ServerConfig.EnableFastTravel" xml:space="preserve">
+    <value>EnableFastTravel</value>
+  </data>
+  <data name="ServerConfig.EnableFriendlyFire" xml:space="preserve">
+    <value>EnableFriendlyFire</value>
+  </data>
+  <data name="ServerConfig.EnableInvaderEnemy" xml:space="preserve">
+    <value>EnableInvaderEnemy</value>
+  </data>
+  <data name="ServerConfig.EnableNonLoginPenalty" xml:space="preserve">
+    <value>EnableNonLoginPenalty</value>
+  </data>
+  <data name="ServerConfig.EnablePlayerToPlayerDamage" xml:space="preserve">
+    <value>EnablePlayerToPlayerDamage</value>
+  </data>
+  <data name="ServerConfig.EnemyDropItemRate" xml:space="preserve">
+    <value>EnemyDropItemRate</value>
+  </data>
+  <data name="ServerConfig.ExistPlayerAfterLogout" xml:space="preserve">
+    <value>ExistPlayerAfterLogout</value>
+  </data>
+  <data name="ServerConfig.ExpRate" xml:space="preserve">
+    <value>ExpRate</value>
+  </data>
+  <data name="ServerConfig.GuildPlayerMaxNum" xml:space="preserve">
+    <value>GuildPlayerMaxNum</value>
+  </data>
+  <data name="ServerConfig.IsMultiplay" xml:space="preserve">
+    <value>IsMultiplay</value>
+  </data>
+  <data name="ServerConfig.IsPVP" xml:space="preserve">
+    <value>IsPVP</value>
+  </data>
+  <data name="ServerConfig.IsStartLocationSelectByMap" xml:space="preserve">
+    <value>IsStartLocationSelectByMap</value>
+  </data>
+  <data name="ServerConfig.NightTimeSpeedRate" xml:space="preserve">
+    <value>NightTimeSpeedRate</value>
+  </data>
+  <data name="ServerConfig.PalAutoHpRegeneRateInSleep" xml:space="preserve">
+    <value>PalAutoHpRegeneRateInSleep</value>
+  </data>
+  <data name="ServerConfig.PalCaptureRate" xml:space="preserve">
+    <value>PalCaptureRate</value>
+  </data>
+  <data name="ServerConfig.PalDamageRateAttack" xml:space="preserve">
+    <value>PalDamageRateAttack</value>
+  </data>
+  <data name="ServerConfig.PalDamageRateDefense" xml:space="preserve">
+    <value>PalDamageRateDefense</value>
+  </data>
+  <data name="ServerConfig.PalEggDefaultHatchingTime" xml:space="preserve">
+    <value>PalEggDefaultHatchingTime</value>
+  </data>
+  <data name="ServerConfig.PalSpawnNumRate" xml:space="preserve">
+    <value>PalSpawnNumRate</value>
+  </data>
+  <data name="ServerConfig.PalStaminaDecreaceRate" xml:space="preserve">
+    <value>PalStaminaDecreaceRate</value>
+  </data>
+  <data name="ServerConfig.PalStomachDecreaceRate" xml:space="preserve">
+    <value>PalStomachDecreaceRate</value>
+  </data>
+  <data name="ServerConfig.PlayerAutoHPRegeneRate" xml:space="preserve">
+    <value>PlayerAutoHPRegeneRate</value>
+  </data>
+  <data name="ServerConfig.PlayerAutoHpRegeneRateInSleep" xml:space="preserve">
+    <value>PlayerAutoHpRegeneRateInSleep</value>
+  </data>
+  <data name="ServerConfig.PlayerDamageRateAttack" xml:space="preserve">
+    <value>PlayerDamageRateAttack</value>
+  </data>
+  <data name="ServerConfig.PlayerDamageRateDefense" xml:space="preserve">
+    <value>PlayerDamageRateDefense</value>
+  </data>
+  <data name="ServerConfig.PlayerStomachDecreaceRate" xml:space="preserve">
+    <value>PlayerStomachDecreaceRate</value>
+  </data>
+  <data name="ServerConfig.PublicIP" xml:space="preserve">
+    <value>PublicIP</value>
+  </data>
+  <data name="ServerConfig.PublicPort" xml:space="preserve">
+    <value>PublicPort</value>
+  </data>
+  <data name="ServerConfig.RCONEnabled" xml:space="preserve">
+    <value>RCONEnabled</value>
+  </data>
+  <data name="ServerConfig.RCONPort" xml:space="preserve">
+    <value>RCONPort</value>
+  </data>
+  <data name="ServerConfig.Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="ServerConfig.ServerDescription" xml:space="preserve">
+    <value>ServerDescription</value>
+  </data>
+  <data name="ServerConfig.ServerName" xml:space="preserve">
+    <value>ServerName</value>
+  </data>
+  <data name="ServerConfig.ServerPassword" xml:space="preserve">
+    <value>ServerPassword</value>
+  </data>
+  <data name="ServerConfig.ServerPlayerMaxNum" xml:space="preserve">
+    <value>ServerPlayerMaxNum</value>
+  </data>
+  <data name="ServerConfig.UseAuth" xml:space="preserve">
+    <value>UseAuth</value>
+  </data>
+  <data name="ServerConfig.WorkSpeedRate" xml:space="preserve">
+    <value>WorkSpeedRate</value>
+  </data>
+  <data name="ServerConfigPage.ApplyNotify" xml:space="preserve">
+    <value>Save Completed</value>
   </data>
 </root>
