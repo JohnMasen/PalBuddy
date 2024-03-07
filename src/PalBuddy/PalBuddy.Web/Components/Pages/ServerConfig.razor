@@ -1,38 +1,12 @@
 ﻿@using PalBuddy.Core
 @using System.Globalization;
 @inject IStringLocalizer<ServerConfig> Loc;
+@inject PalDedicatedServer palServer;
 <h3>ServerConfig</h3>
 <MudSnackbarProvider />
 <p>
-    
+    <button class="btn btn-primary" @onclick="ApplySettings">Apply</button>
     <table class="table table-bordered">
-        @* <tr>
-        <td>
-        ServerName
-        </td>
-        <td>
-        <InputText @bind-Value="serverConfig.ServerName" />
-        </td> 
-        </tr>
-        <tr>
-        <td>Difficulty</td>
-        <td>
-        <InputSelect @bind-Value="serverConfig.Difficulty">
-        <option value="None">None</option>
-        <option value="Difficulty">Difficulty</option>
-        </InputSelect>
-        </td>
-        </tr>
-        <tr>
-        <td>DayTimeSpeedRate</td>
-        <td><input @bind="serverConfig.DayTimeSpeedRate"/></td>
-        </tr>
-        <tr>
-        <td>NightTimeSpeedRate</td>
-        <td><input @bind="serverConfig.NightTimeSpeedRate" /></td>
-        </tr> *@
-
-
         @foreach (var p in serverConfig.GetType().GetProperties())
         {
             <tr>
@@ -93,19 +67,17 @@
     </table>
 </p>
 @code {
-    [Parameter]
-    public PalDedicatedServer Server { get; set; }
 
     private Core.ServerConfig serverConfig;
     protected override void OnInitialized()
     {
-        serverConfig = Server.CurrentConfig;
+        serverConfig = palServer.CurrentConfig;
         base.OnInitialized();
 
     }
     private async Task ApplySettings()
     {
-        Server.CurrentConfig = serverConfig;
+        palServer.CurrentConfig = serverConfig;
         // snak.Configuration.PositionClass = "Bottom-End";
         // snak.Add(Loc.GetString("ServerConfigPage.ApplyNotify"), Severity.Info);
     }

@@ -1,7 +1,46 @@
 ﻿@page "/"
-
+@inject PalDedicatedServer palServer;
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@rendermode InteractiveServer
 
-Welcome to your new app.
+<h3>ServerTest</h3>
+<li>@palServer.ServerState</li>
+<button class="btn btn-primary" @onclick="startServer">Start</button>
+<button class="btn btn-primary" @onclick="stopServer">Stop</button>
+
+
+
+@code {
+    private bool showServerConfig = true;
+    // private ServerConfig serverConfig;
+    // private string DifficultyValue => Enum.GetName(typeof(ServerConfigDifficultyEnum), serverConfig.Difficulty);
+    private void startServer()
+    {
+        palServer.Start();
+    }
+
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            palServer.OnServerStatusChanged += (s, e) =>
+            {
+                InvokeAsync(StateHasChanged).Wait();
+            };
+
+        }
+    }
+    private void stopServer()
+    {
+        palServer.ShutdownByRCON();
+
+    }
+
+
+
+
+}
