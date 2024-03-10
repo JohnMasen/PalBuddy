@@ -1,0 +1,69 @@
+﻿@inject Core.PalDedicatedServer palServer
+@rendermode InteractiveServer
+<h3>ServerControl</h3>
+<li>@palServer.ServerState
+@if (!string.IsNullOrEmpty(serverUpdateDuration))
+{
+    <FluentLabel>@serverUpdateDuration</FluentLabel>
+}
+</li>
+<button class="btn btn-primary" @onclick="startServer">Start</button>
+<button class="btn btn-primary" @onclick="stopServer">Stop</button>
+@* <FluentTextField @Id="upDuration" @bind="serverUpdateDuration" ReadOnly=true/> *@
+
+    @code {
+    private string? serverUpdateDuration { get; set; }
+    private CancellationTokenSource serverUpdateCTS = null;
+    private void startServer()
+    {
+        palServer.Start();
+        BeginUpdateServerUpDuration();
+    }
+
+    private void BeginUpdateServerUpDuration()
+    {
+        serverUpdateCTS?.Cancel();
+        serverUpdateCTS = new();
+        Task.Run(() =>
+        {
+            var token = serverUpdateCTS.Token;
+            while (!token.IsCancellationRequested)
+            {
+                serverUpdateDuration = palServer.RunDuration?.ToString("dd\\.hh\\.ss");
+                InvokeAsync(StateHasChanged).Wait();
+                Thread.Sleep(1000);
+            }
+        }, serverUpdateCTS.Token
+        );
+    }
+
+    private void StopUpdateServerUpDuration()
+    {
+        serverUpdateCTS?.Cancel();
+        serverUpdateCTS = null;
+        serverUpdateDuration = null;
+    }
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            palServer.OnServerStatusChanged += (s, e) =>
+            {
+                InvokeAsync(StateHasChanged).Wait();
+            };
+            if (palServer.ServerState==ServerStatusEnum.Running)
+            {
+                BeginUpdateServerUpDuration();
+            }
+        }
+    }
+    private void stopServer()
+    {
+        palServer.ShutdownByRCON();
+        StopUpdateServerUpDuration();
+
+    }
+}

@@ -165,6 +165,9 @@
   <data name="ServerConfig.DeathPenalty" xml:space="preserve">
     <value>DeathPenalty</value>
   </data>
+  <data name="ServerConfig.Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
   <data name="ServerConfig.DropItemAliveMaxHours" xml:space="preserve">
     <value>DropItemAliveMaxHours</value>
   </data>

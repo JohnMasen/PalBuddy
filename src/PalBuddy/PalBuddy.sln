@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeServer", "FakeServer\Fa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{B31379E1-6E40-435E-8B7E-262F3E5D8979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalBuddy.Web", "PalBuddy.Web\PalBuddy.Web.csproj", "{7C870859-7C49-47F1-A872-5A9469997A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalBuddy.Web", "PalBuddy.Web\PalBuddy.Web.csproj", "{7C870859-7C49-47F1-A872-5A9469997A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

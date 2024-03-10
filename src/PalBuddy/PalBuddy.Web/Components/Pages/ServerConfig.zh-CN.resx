@@ -165,6 +165,9 @@
   <data name="ServerConfig.DeathPenalty" xml:space="preserve">
     <value>死亡惩罚</value>
   </data>
+  <data name="ServerConfig.Difficulty" xml:space="preserve">
+    <value>难度设置</value>
+  </data>
   <data name="ServerConfig.DropItemAliveMaxHours" xml:space="preserve">
     <value>掉落物寿命（小时）</value>
   </data>
@@ -244,7 +247,7 @@
     <value>帕鲁疲劳速率</value>
   </data>
   <data name="ServerConfig.PalStomachDecreaceRate" xml:space="preserve">
-    <value>帕鲁解饿速率</value>
+    <value>帕鲁饥饿速率</value>
   </data>
   <data name="ServerConfig.PlayerAutoHPRegeneRate" xml:space="preserve">
     <value>玩家HP重生速率</value>

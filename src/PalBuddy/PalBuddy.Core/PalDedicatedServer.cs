@@ -202,5 +202,7 @@ namespace PalBuddy.Core
                 }
             }
         }
+
+        public TimeSpan? RunDuration => (DateTime.Now - serverProcess?.StartTime);
     }
 }
