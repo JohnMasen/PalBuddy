@@ -132,30 +132,6 @@ namespace PalBuddy.Core
                     }
                     break;
                 }
-                //if (buffer.StartsWith("OptionSettings="))//ugly code, should use regex
-                //{
-                //    string data = buffer.Split("=", 2)[1];
-                //    if (data.StartsWith("(") && data.EndsWith(")"))
-                //    {
-                //        data = data.Substring(1, data.Length - 2);//remove brackets at begging and ending
-                //    }
-                //    else
-                //    {
-                //        throw new InvalidConfigfileException("Invalid config file format, expected format is OptionsSettings=(<config>)");
-                //    }
-                //    var pairs = data.Split(",", StringSplitOptions.RemoveEmptyEntries);
-                //    foreach (var item in pairs)
-                //    {
-                //        var p = item.Split("=");
-                //        string v = p[1];
-                //        if (v.StartsWith("\"") && v.EndsWith("\""))
-                //        {
-                //            v = v.Substring(1, v.Length - 2);
-                //        }
-                //        kvTable.Add(p[0], v);
-                //    }
-                //    break;
-                //}
                 buffer = reader.ReadLine();
             }
             if (kvTable.Count>0)
@@ -165,8 +141,12 @@ namespace PalBuddy.Core
                 foreach (var p in ps)
                 {
                     var name = p.GetCustomAttribute<StreamPropertyNameAttribute>()?.Name ?? p.Name;
-                    string value = kvTable[name];
-                    result.SetPropertyByName(p.Name, value);
+                    if(kvTable.TryGetValue(name, out string value))
+                    {
+                        result.SetPropertyByName(p.Name, value);
+                    }
+                    //string value = kvTable[name];
+                    
                     //if (p.PropertyType.IsEnum)
                     //{
                     //    p.SetValue(result, Enum.Parse(p.PropertyType, kvTable[name]));
@@ -194,7 +174,7 @@ namespace PalBuddy.Core
                 }
                 return result;
             }
-            throw new InvalidOperationException("failed to parse config file,section [OptionsSettings=...] not found");
+            throw new InvalidOperationException("failed to parse config file,section [OptionSettings=...] not found");
 
 
         }

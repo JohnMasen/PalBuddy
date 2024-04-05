@@ -2,8 +2,9 @@
 @using System.Globalization;
 @inject IStringLocalizer<ServerConfig> Loc;
 @inject PalDedicatedServer palServer;
+@inject IToastService toast;
+<FluentToastProvider />
 <h3>ServerConfig</h3>
-<MudSnackbarProvider />
 <p>
     <button class="btn btn-primary" @onclick="ApplySettings">Apply</button>
     <table class="table table-bordered">
@@ -78,6 +79,7 @@
     private async Task ApplySettings()
     {
         palServer.CurrentConfig = serverConfig;
+        toast.ShowSuccess(Loc.GetString("Config.ApplySuccess"));
         // snak.Configuration.PositionClass = "Bottom-End";
         // snak.Add(Loc.GetString("ServerConfigPage.ApplyNotify"), Severity.Info);
     }
